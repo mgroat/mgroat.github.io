@@ -1,0 +1,23 @@
+body {
+	background-color: black;
+	color: white;
+}
+
+a {
+	color: #FFFFFF;
+}
+
+li.nav {
+    float: left;
+	display: block;
+    padding: 8px;
+    background-color: #333333;
+}
+
+.nav a:hover {
+	background-color: #444444;
+}
+
+tr.col_header {
+	font-weight: bold;
+}
