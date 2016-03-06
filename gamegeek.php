@@ -1,7 +1,11 @@
-<link rel='stylesheet' type='text/css' href='style.css'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<div class="container">
 <form action="gamegeek.php" method="get">
 Enter a list of boardgamegeek users, separated by a space
 <input type="text" name="users" value="<?php if (isset($_GET['users'])) echo $_GET['users'];?>">
+<button type="submit" class="btn btn-success"><i class="fa fa-paper-plane"></i>Search BGG</button>
 </form>
 <p>
 
@@ -62,3 +66,6 @@ Enter a list of boardgamegeek users, separated by a space
   ga('send', 'pageview');
 
 </script>
+
+
+</div>
