@@ -12,6 +12,8 @@
 </style>
 <div class="container">
 
+<h1><center>Combined Board Game Library</center></h1>
+
 <form action="gamegeek.php" method="get">
 <div class="row lead">
     Enter a list of <a href="http://www.boardgamegeek.com">boardgamegeek</a> users, separated by a space<br>
