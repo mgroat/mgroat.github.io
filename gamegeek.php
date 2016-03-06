@@ -14,9 +14,18 @@ Enter a list of boardgamegeek users, separated by a space
 		$p = xml_parser_create();
 		xml_parse_into_struct($p,$bgg_data,$vals,$index);
 		xml_parser_free($p);
-		//echo "<pre>";
-		//print_r($index);
-		//print_r($vals);
+    if (!array_key_exists("NAME",$index)) { //Sometimes BGG tells us to try again instead of giving data
+      sleep(3); //We may be able to get away with shortening this
+      $bgg_data = file_get_contents("https://www.boardgamegeek.com/xmlapi2/collection?own=1&username=".$user);
+      $p = xml_parser_create();
+      xml_parse_into_struct($p,$bgg_data,$vals,$index);
+      xml_parser_free($p);
+    }
+    if (!array_key_exists("NAME",$index)) { //If the username was invalid
+      echo "<h2><font color='red'>Can't find user $user</font></h2>";
+      $index["NAME"] = [];
+    }
+    
 		foreach ($index['NAME'] as $key => $item) {
 			//echo $item;
 			//print_r($vals[$item]['value']);
