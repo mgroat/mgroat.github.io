@@ -47,8 +47,6 @@
     }
     
 		foreach ($index['NAME'] as $key => $item) {
-			//echo $item;
-			//print_r($vals[$item]['value']);
 			if(!isset($all_games[$vals[$item]['value']])) {
 				$all_games[$vals[$item]['value']]['thumb'] = $vals[$index['THUMBNAIL'][$key]]['value'];
 				$all_games[$vals[$item]['value']]['owner'] = $user;
@@ -62,16 +60,19 @@
  
 	//Sort games alphabetically
 	ksort($all_games);
+  
+  //Show column headers
 	echo "<div class='row lead gameRow'>".
   "<div class='col-xs-4'><b>Title</b></div>".
-  "<div class='col-xs-4'><b>Image</b></div>".
+  "<div class='col-xs-4'><b><center>Image</center></b></div>".
   "<div class='col-xs-4'><b>Owner</b></div>".
   "</div>";
   
+  //Show all games
 	foreach ($all_games as $key => $game) {
 		echo "<div class='row lead gameRow'>\n";
 		echo "<div class='col-xs-4'><a href='https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=".$key."'>".$key."</a>"."</div>\n".
-    "<div class='col-xs-4'><img src='".$game['thumb']."' class='img-responsive img-rounded'></div>\n".
+    "<div class='col-xs-4'><center><img src='".$game['thumb']."' class='img-responsive img-rounded'></center></div>\n".
     "<div class='col-xs-4'>".$game['owner']."</div>\n";
 		echo "</div>\n\n";
 	}
