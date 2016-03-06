@@ -2,13 +2,20 @@
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
 <div class="container">
+
 <form action="gamegeek.php" method="get">
-Enter a list of boardgamegeek users, separated by a space
-<input type="text" name="users" value="<?php if (isset($_GET['users'])) echo $_GET['users'];?>">
-<button type="submit" class="btn btn-success"><i class="fa fa-paper-plane"></i>Search BGG</button>
+<div class="row lead">
+    Enter a list of <a href="http://www.boardgamegeek.com">boardgamegeek</a> users, separated by a space<br>
+  You will be given a list of your combined games library
+</div>
+<div class="row lead">
+  <input type="text" name="users" value="<?php if (isset($_GET['users'])) echo $_GET['users'];?>">
+  <button type="submit" class="btn btn-success"><i class="fa fa-paper-plane"></i>Search BGG</button>
+</div>
 </form>
 <p>
 
+    
 <?php
 	if(isset($_GET['users'])) $users = explode(" ",$_GET['users']);
 	else $users = [];
@@ -45,14 +52,14 @@ Enter a list of boardgamegeek users, separated by a space
 	
 	//Sort games alphabetically
 	ksort($all_games);
-	echo "<div class='row'>".
+	echo "<div class='row lead'>".
   "<div class='col-xs-4'><b>Title</b></div>".
-  "<div class='col-xs-4'><b><center>Image</center></b></div>".
+  "<div class='col-xs-4'><b>Image</b></div>".
   "<div class='col-xs-4'><b>Owner</b></div>".
   "</div>";
   
 	foreach ($all_games as $key => $game) {
-		echo "<div class='row'>\n";
+		echo "<div class='row lead'>\n";
 		echo "<div class='col-xs-4'><a href='https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=".$key."'>".$key."</a>"."</div>\n".
     "<div class='col-xs-4'><img src='".$game['thumb']."' class='img-responsive img-rounded'></div>\n".
     "<div class='col-xs-4'>".$game['owner']."</div>\n";
