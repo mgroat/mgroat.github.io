@@ -1,6 +1,15 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<style>
+  .gameRow {
+    background: #c0c0c0;
+    background: #8db8c6;
+  }
+  body {
+    background: #add8e6;
+  }
 
+</style>
 <div class="container">
 
 <form action="gamegeek.php" method="get">
@@ -50,16 +59,17 @@
 		}
 	}
 	
+ 
 	//Sort games alphabetically
 	ksort($all_games);
-	echo "<div class='row lead'>".
+	echo "<div class='row lead gameRow'>".
   "<div class='col-xs-4'><b>Title</b></div>".
   "<div class='col-xs-4'><b>Image</b></div>".
   "<div class='col-xs-4'><b>Owner</b></div>".
   "</div>";
   
 	foreach ($all_games as $key => $game) {
-		echo "<div class='row lead'>\n";
+		echo "<div class='row lead gameRow'>\n";
 		echo "<div class='col-xs-4'><a href='https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=".$key."'>".$key."</a>"."</div>\n".
     "<div class='col-xs-4'><img src='".$game['thumb']."' class='img-responsive img-rounded'></div>\n".
     "<div class='col-xs-4'>".$game['owner']."</div>\n";
@@ -67,7 +77,7 @@
 	}
 	
 	?>
-	
+    
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
