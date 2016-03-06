@@ -45,13 +45,18 @@ Enter a list of boardgamegeek users, separated by a space
 	
 	//Sort games alphabetically
 	ksort($all_games);
-	echo "<table>";
-	echo "<tr class='col_header'><td>Game Title</td><td>Image</td><td>Owned by</td></tr>";
+	echo "<div class='row'>".
+  "<div class='col-xs-4'><b>Title</b></div>".
+  "<div class='col-xs-4'><b><center>Image</center></b></div>".
+  "<div class='col-xs-4'><b>Owner</b></div>".
+  "</div>";
+  
 	foreach ($all_games as $key => $game) {
-		echo "<tr>";
-		echo "<td><a href='https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=".$key."'>".$key."</a>".
-		"</td><td><img src='".$game['thumb']."'></td><td>".$game['owner']."</td>";
-		echo "</tr>";
+		echo "<div class='row'>\n";
+		echo "<div class='col-xs-4'><a href='https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=".$key."'>".$key."</a>"."</div>\n".
+    "<div class='col-xs-4'><img src='".$game['thumb']."' class='img-responsive img-rounded'></div>\n".
+    "<div class='col-xs-4'>".$game['owner']."</div>\n";
+		echo "</div>\n\n";
 	}
 	
 	?>
