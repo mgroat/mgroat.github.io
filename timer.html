@@ -5,9 +5,7 @@ function startTimer(timerSetup) {
     var i = 0;
 	//timerSetup[i] = [seconds, activity, sound object]
 	var timer =timerSetup[i][0];
-	
-	//Put things we do on every iteration (incl first) here
-	$("#activity").text(timerSetup[i][1]);
+	switchTask(timerSetup[i]);
 	
     setInterval(function () {
         var minutes = parseInt(timer / 60, 10);
@@ -25,18 +23,24 @@ function startTimer(timerSetup) {
 				i = 0;
 			}
             timer = timerSetup[i][0];
-			$("#activity").text(timerSetup[i][1]);
-			document.title=timerSetup[i][1];
-			timerSetup[i][2].play();
-			if (Notification.permission !== "granted"){
-				Notification.requestPermission();}
-			else {
-				var notification = new Notification('Timer', {
-				body: "Time for " + timerSetup[i][1],
-				});
-			}
+			switchTask(timerSetup[i]);
 		}
     }, 1000);
+}
+
+function switchTask(taskInfo) {
+	$("#activity").text(taskInfo[1]);
+	document.title=taskInfo[1];
+	taskInfo[2].play();
+
+	//http://stackoverflow.com/questions/29525331/how-to-set-a-closing-time-for-notification-extension-chrome
+	if (Notification.permission !== "granted"){
+		Notification.requestPermission();}
+	else {
+		var notification = new Notification('Timer', {
+		body: "Time for " + taskInfo[1],
+		});
+	}
 }
 
 window.onload = function () {
