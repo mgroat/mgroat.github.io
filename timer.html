@@ -1,9 +1,9 @@
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 <script   src="https://code.jquery.com/jquery-2.2.2.min.js"   integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="   crossorigin="anonymous"></script>
 <script>
 //http://stackoverflow.com/questions/20618355/the-simplest-possible-javascript-countdown-timer
 function startTimer(timerSetup) {
     var i = 0;
-	//timerSetup[i] = [seconds, activity, sound object]
 	var timer =timerSetup[i][0];
 	switchTask(timerSetup[i]);
 	
@@ -29,6 +29,7 @@ function startTimer(timerSetup) {
 }
 
 function switchTask(taskInfo) {
+	//taskInfo holds [time, activity, name]
 	$("#activity").text(taskInfo[1]);
 	document.title=taskInfo[1];
 	taskInfo[2].play();
@@ -48,7 +49,11 @@ window.onload = function () {
     startTimer([[25*60,"Focus",work],[5*60,"Stretch",rest]]);
 };
 </script>
-<h1 id='activity'></h1>
-<h2 id='time'></h2>
-<p>
-This page uses Creative Commons licenced sounds from http://freesound.org/ users netaj and  Aiwha
+<div class='container-fluid text-primary'>
+	<div class='jumbotron'>
+		<center><h1 id='activity'>Activity</h1></center>
+		<center><h2 id='time'>--:--</h2></center>
+	</div>
+<div class='text-muted'>
+	This page uses Creative Commons licenced sounds from http://freesound.org/ users netaj and  Aiwha
+</div>
