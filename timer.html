@@ -37,17 +37,18 @@ function switchTask(taskInfo) {
 	if (Notification.permission !== "granted"){
 		Notification.requestPermission();}
 	else {
-		var notification = new Notification('Timer', {
-		body: "Time for " + taskInfo[1],
-		});
+		var notification = new Notification("Time to " + taskInfo[1]);
+		setTimeout(function(){notification.close()},2000);
 	}
 }
 
 window.onload = function () {
 	var work = new Audio("http://freesound.org/data/previews/193/193170_3012047-lq.mp3");
 	var rest = new Audio("http://freesound.org/data/previews/196/196106_2271450-lq.mp3");
-    startTimer([[5,"Focus",work],[3,"Rest",rest]]);
+    startTimer([[25*60,"Focus",work],[5*60,"Stretch",rest]]);
 };
 </script>
 <h1 id='activity'></h1>
 <h2 id='time'></h2>
+<p>
+This page uses Creative Commons licenced sounds from http://freesound.org/ users netaj and  Aiwha
