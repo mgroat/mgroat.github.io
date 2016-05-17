@@ -1,0 +1,5 @@
+Is thing a done`
+Is thing b done`
+Is thing c, that depends on thing a done`1
+Is thing d, that depends on thing c done`3
+Is thing e, that depends on thing c and thing b done`2,3
