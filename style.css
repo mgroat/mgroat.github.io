@@ -1,5 +1,11 @@
+.color-primary-0 { color: #402A6A }	/* Main Primary color */
+.color-primary-1 { color: #7B699E }
+.color-primary-2 { color: #574280 }
+.color-primary-3 { color: #29154F }
+.color-primary-4 { color: #150633 }
+
 body {
-	background-color: black;
+	background-color: #402A6A;
 	color: white;
 }
 
