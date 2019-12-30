@@ -1,0 +1,32 @@
+<html>
+	<head>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/2.4.2/seedrandom.min.js"></script>
+		<script>
+			//Pull GET data from URI
+			//Taken from: http://stackoverflow.com/a/2091331/2393763
+			function $_GET(variable) {
+				var query = window.location.search.substring(1);
+				var vars = query.split('&');
+				for (var i = 0; i < vars.length; i++) {
+					var pair = vars[i].split('=');
+					if (decodeURIComponent(pair[0]) == variable) {
+						return decodeURIComponent(pair[1]);
+					}
+				}
+				console.log('Query variable %s not found', variable);
+				return false;
+			}
+			
+			function pickRandomWord(wordList) {
+				var wordNum = Math.floor(Math.random() * wordList.length);
+				return wordList[wordNum];
+			}
+			
+			Math.seedrandom($_GET('seed'));
+			var animals = ["Cat","Bird","Dog"];
+			var colors = ["Red","Orange","Yellow","Green","Blue","Indigo","Violet"];
+			var adj = ["Fast","Slow","Timid","Hyper","Jumpy","Active"];
+			
+			document.write(pickRandomWord(adj) + " " + pickRandomWord(colors) + " " + pickRandomWord(animals));
+		</script>
+	</head>
